@@ -255,7 +255,7 @@ h1 {
                     </select>
                 </th>
                 <th>分类 
-                    <select id="filterCol6" onchange="filterTable('filter', 5)">
+                    <select id="filterCol6" onchange="filterTable('filter', 4)">
                         <option value="">全部</option>
                     </select>
                 </th>
@@ -793,37 +793,37 @@ h1 {
 
     }
 
-    // 过滤表格数据
-    function filterTable(type, columnIndex) {
-        let filteredData = allData;
+   // 过滤表格数据
+function filterTable(type, columnIndex) {
+    let filteredData = allData;
 
-        // 全局搜索（所有列）
-        if (type === 'search') {
-            const searchText = document.getElementById('searchCol1').value.toLowerCase();
-            filteredData = filteredData.filter(row => 
-                row.some(cell => cell.toLowerCase().includes(searchText)) // 检查每一列
-            );
-        }
+    // 全局搜索（所有列）
+    if (type === 'search') {
+        const searchText = document.getElementById('searchCol1').value.toLowerCase();
+        filteredData = filteredData.filter(row => 
+            row.some(cell => cell.toLowerCase().includes(searchText)) // 检查每一列
+        );
+    }
 
-        // 按列筛选
-        if (type === 'filter') {
-            const filterValue = document.getElementById(`filterCol${columnIndex + 1}`).value;
-            if (filterValue) {
-                if (columnIndex === 1 || columnIndex === 4) {
-                    // 处理第二列和第五列的分类拆分
-                    filteredData = filteredData.filter(row => 
-                        row[columnIndex].split(/[，；]/).some(item => item.trim() === filterValue)
-                    );
-                } else {
-                    filteredData = filteredData.filter(row => 
-                        row[columnIndex] === filterValue
-                    );
-                }
+    // 按列筛选
+    if (type === 'filter') {
+        const filterValue = document.getElementById(`filterCol${columnIndex + 1}`).value;
+        if (filterValue) {
+            if (columnIndex === 1 || columnIndex === 4) {
+                // 处理第二列和第五列的分类拆分
+                filteredData = filteredData.filter(row => 
+                    row[columnIndex].split(/[，；]/).some(item => item.trim() === filterValue)
+                );
+            } else {
+                filteredData = filteredData.filter(row => 
+                    row[columnIndex] === filterValue
+                );
             }
         }
-
-        renderTable(filteredData);
     }
+
+    renderTable(filteredData);
+}
 
     // 初始化数据
     initData();
