@@ -97,7 +97,14 @@ h1 {
         width: 100%; /* 表格宽度占满容器 */
         table-layout: fixed; /* 固定表格布局，防止内容过长导致表格溢出 */
     }
-
+    /* 第一列和第二列样式 */
+    td:nth-child(1),
+    td:nth-child(2) {
+        width: 80px; /* 设置固定宽度 */
+        max-width: 80px; /* 限制最大宽度 */
+        word-break: break-all; /* 强制换行 */
+        white-space: normal; /* 允许换行 */
+    }
 }
             /* 调整筛选栏内输入框和下拉菜单的样式 */
             input[type="text"], select {
