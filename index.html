@@ -97,11 +97,13 @@ h1 {
     table {
         width: 100%; /* 表格宽度占满容器 */
         table-layout: fixed; /* 固定表格布局，防止内容过长导致表格溢出 */
+        border-collapse: collapse; /* 合并表格边框 */
     }
     /* 单元格样式调整 */
     td, th {
-        word-wrap: break-word; /* 允许长单词换行 */
-        white-space: nowrap; /* 防止文本换行 */
+        word-break: break-word; /* 允许长单词换行 */
+        white-space: normal; /* 允许换行 */
+        overflow: visible; /* 显示全部内容 */
     }
 }
         .content {
